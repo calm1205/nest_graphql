@@ -1,0 +1,31 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""item status"""
+enum ItemStatus {
+  ON_SALE
+  SOLDOUT
+}
+
+"""items"""
+type Items {
+  """説明"""
+  description: String
+
+  """id"""
+  id: ID!
+
+  """品名"""
+  name: String!
+
+  """価格"""
+  price: Float!
+
+  """ステータス"""
+  status: ItemStatus!
+}
+
+type Query {
+  item(id: Float!): Items!
+}
