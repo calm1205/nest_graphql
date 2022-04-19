@@ -5,19 +5,12 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { join } from 'path';
 import { ItemsModule } from './item/item.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import typeormConfig from './typeorm.config';
 
 @Module({
   imports: [
     ItemsModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5555,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'postgres',
-      autoLoadEntities: true,
-    }),
+    TypeOrmModule.forRoot(typeormConfig),
     GraphQLModule.forRootAsync<ApolloDriverConfig>({
       driver: ApolloDriver,
       useFactory: () => ({
