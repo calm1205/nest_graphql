@@ -4,7 +4,7 @@ services:
     image: node:17
     container_name: nest_graphql_node
     ports:
-      - 3000:3000
+      - 8000:8000
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app

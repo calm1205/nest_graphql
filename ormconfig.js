@@ -13,4 +13,6 @@ module.exports = {
     entitiesDir: 'src/entities',
     migrationsDir: 'src/migrations',
   },
+  seeds: ['src/dist/seeds/**/*{.ts,.js}'],
+  factories: ['src/dist/factories/**/*{.ts,.js}'],
 };
