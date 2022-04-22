@@ -5,9 +5,8 @@ import { ItemStatus } from '~/item/item-status.enum';
 
 export default class CreateItem implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
-    const data: Items[] = [...Array(10)].map((i) => {
+    const data: Omit<Items, 'id'>[] = [...Array(10)].map((i) => {
       return {
-        id: '',
         name: `item_${i}`,
         price: 3000,
         description: 'this is item description.',
@@ -20,7 +19,7 @@ export default class CreateItem implements Seeder {
     await connection
       .createQueryBuilder()
       .insert()
-      .into(Items)
+      .into('items')
       .values(data)
       .execute();
   }

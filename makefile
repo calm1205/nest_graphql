@@ -7,24 +7,25 @@ up:
 run:
 	npm run start:run
 
-bash-node:
+node:
 	docker compose exec node bash
 
-bash-postgres:
+postgres:
 	docker compose exec postgres bash
 
 migration-gen:
-	npx typeorm migration:generate -n $(args)
+	npm run typeorm migration:generate -n $(args)
 
-migration-run:
+migrate:
 	npm run build
-	npx typeorm migration:run
+	npm run typeorm migration:run
 
 seed:
+	npm run build
 	npm run seed:run
 
 db-drop:
-	npx typeorm schema:drop
+	npm run typeorm schema:drop
 
 sample: 
 	@echo 'args is $(args).'

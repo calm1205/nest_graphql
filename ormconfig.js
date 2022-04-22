@@ -7,12 +7,12 @@ module.exports = {
   database: 'postgres',
   autoLoadEntities: true,
 
-  entities: ['dist/entities/*.entity.js'],
-  migrations: ['dist/migrations/*.js'],
+  entities: ['dist/src/entities/*.entity.js'],
+  migrations: ['dist/src/migrations/*.js'],
   cli: {
     entitiesDir: 'src/entities',
     migrationsDir: 'src/migrations',
   },
-  seeds: ['src/dist/seeds/**/*{.ts,.js}'],
-  factories: ['src/dist/factories/**/*{.ts,.js}'],
+  seeds: ['src/database/seeds/**/*{.ts,.js}'],
+  factories: ['src/database/factories/**/*{.ts,.js}'],
 };
