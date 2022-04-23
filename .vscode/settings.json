@@ -3,6 +3,7 @@
   "editor.formatOnSave": true,
   "editor.useTabStops": false,
   "editor.stickyTabStops": true,
+  "editor.insertSpaces": true,
   "editor.detectIndentation": false,
   "editor.renderWhitespace": "boundary",
   "editor.codeActionsOnSave": {

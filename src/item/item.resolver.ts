@@ -1,13 +1,18 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { Items } from '~/entities/item.entity';
+import { Item } from '~/entities/item.entity';
 import { ItemService } from './item.service';
 
-@Resolver(() => Items)
+@Resolver(() => Item)
 export class ItemResolver {
   constructor(private itemService: ItemService) {}
 
-  @Query(() => Items)
-  async item(@Args('id') id: number): Promise<number> {
-    return await this.itemService.findOneById(id);
+  @Query(() => Item)
+  async findItemById(@Args('id') id: string) {
+    return await this.itemService.findItemById(id);
+  }
+
+  @Query(() => [Item])
+  async findAllItems() {
+    return await this.itemService.findAllItems();
   }
 }

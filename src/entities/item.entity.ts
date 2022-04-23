@@ -1,10 +1,16 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { ItemStatus } from 'src/item/item-status.enum';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity()
-@ObjectType({ description: 'items' })
-export class Items {
+@Entity({ name: 'items' })
+@ObjectType({ description: '商品' })
+export class Item {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID, { description: 'id' })
   id: string;
@@ -14,7 +20,7 @@ export class Items {
   name: string;
 
   @Column()
-  @Field({ description: '価格' })
+  @Field(() => Int, { description: '価格' })
   price: number;
 
   @Column()
@@ -25,9 +31,9 @@ export class Items {
   @Field(() => ItemStatus, { description: 'ステータス' })
   status: ItemStatus;
 
-  @Column()
-  createdAt: string;
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp', precision: 0 })
+  readonly createdAt: Date;
 
-  @Column()
-  updatedAt: string;
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', precision: 0 })
+  readonly updatedAt: Date;
 }

@@ -2,17 +2,8 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""item status"""
-enum ItemStatus {
-  ON_SALE
-  SOLDOUT
-}
-
-"""items"""
-type Items {
-  """説明"""
-  description: String
-
+"""商品"""
+type Item {
   """id"""
   id: ID!
 
@@ -20,12 +11,22 @@ type Items {
   name: String!
 
   """価格"""
-  price: Float!
+  price: Int!
+
+  """説明"""
+  description: String
 
   """ステータス"""
   status: ItemStatus!
 }
 
+"""item status"""
+enum ItemStatus {
+  ON_SALE
+  SOLDOUT
+}
+
 type Query {
-  item(id: Float!): Items!
+  findItemById(id: String!): Item!
+  findAllItems: [Item!]!
 }
