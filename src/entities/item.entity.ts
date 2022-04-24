@@ -27,7 +27,7 @@ export class Item {
   @Field({ nullable: true, description: '説明' })
   description: string;
 
-  @Column()
+  @Column({ default: ItemStatus.ON_SALE })
   @Field(() => ItemStatus, { description: 'ステータス' })
   status: ItemStatus;
 
