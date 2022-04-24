@@ -1,3 +1,4 @@
+import { ParseUUIDPipe } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Result } from '~/common/types/result.type';
 import { Item } from '~/entities/item.entity';
@@ -9,7 +10,7 @@ export class ItemResolver {
   constructor(private itemService: ItemService) {}
 
   @Query(() => Item, { description: '商品のid検索' })
-  async findItemById(@Args('id') id: string) {
+  async findItemById(@Args('id', ParseUUIDPipe) id: string) {
     return await this.itemService.findItemById(id);
   }
 

@@ -40,6 +40,7 @@ type Query {
 }
 
 type Mutation {
+  """商品登録"""
   createItem(item: ItemInput!): Result!
 }
 
