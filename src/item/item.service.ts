@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { getRepository } from 'typeorm';
 import { Result } from '~/common/types/result.type';
 import { Item } from '~/entities/item.entity';
@@ -7,7 +7,9 @@ import { ItemInput } from './item.input';
 @Injectable()
 export class ItemService {
   async findItemById(id: string): Promise<Item> {
-    return await getRepository(Item).findOne(id);
+    const item = await getRepository(Item).findOne(id);
+    if (!item) throw new NotFoundException();
+    return item;
   }
 
   async findAllItems(): Promise<Item[]> {

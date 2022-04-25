@@ -56,5 +56,5 @@ input ItemInput {
   description: String
 
   """ステータス"""
-  status: ItemStatus = ON_SALE
+  status: ItemStatus!
 }
