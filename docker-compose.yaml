@@ -4,7 +4,7 @@ services:
     image: node:17
     container_name: nest_graphql_node
     ports:
-      - 3000:3000
+      - 8000:8000
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app
@@ -14,7 +14,7 @@ services:
     image: postgres:12.2-alpine
     container_name: nest_graphql_postgres
     ports:
-      - 5432:5432
+      - 5555:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres

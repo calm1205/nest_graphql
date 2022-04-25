@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""mutationの結果"""
+type Result {
+  success: Boolean!
+}
+
+"""商品"""
+type Item {
+  """id"""
+  id: ID!
+
+  """品名"""
+  name: String!
+
+  """価格"""
+  price: Int!
+
+  """説明"""
+  description: String
+
+  """ステータス"""
+  status: ItemStatus!
+}
+
+"""item status"""
+enum ItemStatus {
+  ON_SALE
+  SOLDOUT
+}
+
+type Query {
+  """商品のid検索"""
+  findItemById(id: String!): Item!
+
+  """商品の全件検索"""
+  findAllItems: [Item!]!
+}
+
+type Mutation {
+  """商品登録"""
+  createItem(item: ItemInput!): Result!
+}
+
+"""商品登録用Input"""
+input ItemInput {
+  """商品名"""
+  name: String!
+
+  """価格"""
+  price: Int!
+
+  """説明"""
+  description: String
+
+  """ステータス"""
+  status: ItemStatus!
+}
