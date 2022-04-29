@@ -4,6 +4,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GQLModule } from './graphql.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), GQLModule, ItemsModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      autoLoadEntities: true,
+    }),
+    GQLModule,
+    ItemsModule,
+  ],
 })
 export class AppModule {}
