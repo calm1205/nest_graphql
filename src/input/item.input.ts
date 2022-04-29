@@ -1,6 +1,6 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
 import { IsEnum, IsNotEmpty, MaxLength, Min } from 'class-validator';
-import { ItemStatus } from './item-status.enum';
+import { ItemStatus } from '../enum/item-status.enum';
 
 @InputType({ description: '商品登録用Input' })
 export class ItemInput {
