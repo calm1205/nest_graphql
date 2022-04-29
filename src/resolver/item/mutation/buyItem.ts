@@ -1,13 +1,13 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { Item } from '~/entities/item.entity';
-import { ItemService } from '~/item/item.service';
+import { BuyItemService } from '~/service/item/buyItem.service';
 
 @Resolver(() => Item)
 export class BuyItem {
-  constructor(private readonly itemService: ItemService) {}
+  constructor(private readonly usecase: BuyItemService) {}
 
   @Mutation(() => Item, { description: '商品の購入' })
   async buyItem(@Args('itemId') itemId: string) {
-    return await this.itemService.buyItem(itemId);
+    return await this.usecase.execute(itemId);
   }
 }
