@@ -1,5 +1,5 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
-import { ItemStatus } from 'src/item/item-status.enum';
+import { ItemStatus } from '~/enum/item-status.enum';
 import {
   Column,
   CreateDateColumn,

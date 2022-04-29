@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Item } from '~/entities/item.entity';
-import { ItemStatus } from '~/item/item-status.enum';
+import { ItemStatus } from '~/enum/item-status.enum';
 
 @Injectable()
 export class BuyItemService {
