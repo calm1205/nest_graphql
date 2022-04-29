@@ -7,11 +7,11 @@ import { ItemService } from './item.service';
 
 @Resolver(() => Item)
 export class ItemResolver {
-  constructor(private itemService: ItemService) {}
+  constructor(private readonly itemService: ItemService) {}
 
   @Query(() => Item, { description: '商品のid検索' })
-  async findItemById(@Args('id', ParseUUIDPipe) id: string) {
-    return await this.itemService.findItemById(id);
+  async findItemById(@Args('itemId', ParseUUIDPipe) itemId: string) {
+    return await this.itemService.findItemById(itemId);
   }
 
   @Query(() => [Item], { description: '商品の全件検索' })
@@ -22,5 +22,15 @@ export class ItemResolver {
   @Mutation(() => Result, { description: '商品登録' })
   async createItem(@Args('item') item: ItemInput) {
     return await this.itemService.createItem(item);
+  }
+
+  @Mutation(() => Item, { description: '商品の購入' })
+  async buyItem(@Args('itemId') itemId: string) {
+    return await this.itemService.buyItem(itemId);
+  }
+
+  @Mutation(() => Result, { description: '商品の削除' })
+  async deleteItem(@Args('itemId') itemId: string) {
+    return await this.itemService.deleteItem(itemId);
   }
 }

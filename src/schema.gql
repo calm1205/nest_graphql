@@ -2,11 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""mutationの結果"""
-type Result {
-  success: Boolean!
-}
-
 """商品"""
 type Item {
   """id"""
@@ -31,9 +26,14 @@ enum ItemStatus {
   SOLDOUT
 }
 
+"""mutationの結果"""
+type Result {
+  success: Boolean!
+}
+
 type Query {
   """商品のid検索"""
-  findItemById(id: String!): Item!
+  findItemById(itemId: String!): Item!
 
   """商品の全件検索"""
   findAllItems: [Item!]!
@@ -42,6 +42,12 @@ type Query {
 type Mutation {
   """商品登録"""
   createItem(item: ItemInput!): Result!
+
+  """商品の購入"""
+  buyItem(itemId: String!): Item!
+
+  """商品の削除"""
+  deleteItem(itemId: String!): Result!
 }
 
 """商品登録用Input"""
